@@ -7,7 +7,7 @@ import { ConfigService } from '@nestjs/config';
  */
 @Injectable()
 export class MongoConfigService {
-  constructor(private configService: ConfigService) {}
+  constructor(private readonly configService: ConfigService) {}
 
   get host(): string {
     return this.configService.get<string>('mongo.host');

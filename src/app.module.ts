@@ -1,9 +1,9 @@
-import { CacheModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { TestModule } from './test/test.module';
-import * as redisStore from 'cache-manager-redis-store';
 import { MongooseConfigModule } from './config/database/mongoose/config.module';
 import { ConfigModule } from '@nestjs/config';
 import { AppConfigModule } from './config/app/config.module';
+import { RedisCacheModule } from './config/database/cache/config.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -14,11 +14,7 @@ const ENV = process.env.NODE_ENV;
     }),
     AppConfigModule,
     MongooseConfigModule,
-    CacheModule.register({
-      store: redisStore,
-      host: 'localhost',
-      port: 7000,
-    }),
+    RedisCacheModule,
     TestModule,
   ],
 })

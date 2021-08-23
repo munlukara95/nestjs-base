@@ -12,7 +12,7 @@ import MongooseConfigUtil from './config.util';
  */
 @Injectable()
 export class MongooseConfigService implements MongooseOptionsFactory {
-  constructor(private mongoConfigService: MongoConfigService) {}
+  constructor(private readonly mongoConfigService: MongoConfigService) {}
 
   createMongooseOptions(): MongooseModuleOptions {
     const mongooseConnectionUri =
